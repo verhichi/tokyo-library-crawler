@@ -42,3 +42,14 @@
     main{
       min-height: 100%;
     }
+
+    // Hero-image
+      .hero-image{
+        align-items: center;
+        background-image: url("./images/book.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+        display: flex;
+        height: 85%;
+        padding: 25px;
+      }
