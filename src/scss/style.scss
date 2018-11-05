@@ -70,4 +70,23 @@
             }
           }
 
+        // Search Button
+          .search-button{
+            background: $primary-color;
+            border: none;
+            border-radius: 2px;
+            color: $white-color;
+            font-size: 32px;
+            height: 64px;
+            width: 100%;
+
+            &:active{
+              background: $primary-color-active;
+            }
+
+            &:disabled{
+              background: $secondary-color;
+            }
+          }
+
           
