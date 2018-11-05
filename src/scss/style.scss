@@ -1,23 +1,33 @@
 // compileCompressed: ../style.min.css
 
-@import "./variable";
-@import "./font";
+// IMPORTS
+  @import "./variable";
+  @import "./font";
 
-// Box sizing
-*,
-*::after,
-*::before{
-  box-sizing: inherit;
-  font-family: "ColabThin";
-}
+// GENERAL PROPERTIES
+  // Box sizing
+    *,
+    *::after,
+    *::before{
+      box-sizing: inherit;
+      font-family: "ColabThin";
+    }
 
-html{
-  box-sizing: border-box;
-}
+    html{
+      box-sizing: border-box;
+    }
 
+  // Height
+    html,
+    body{
+      height: 100%;
+    }
 
-// height
-html,
-body{
-  height: 100%;
-}
+// ELEMENT SPECIFIC PROPERTIES
+  // Header
+    header{
+      background: $header-background-color;
+      color: $white-color;
+      height: 50px;
+      text-align: left;
+    }
