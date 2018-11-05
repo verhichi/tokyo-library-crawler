@@ -192,3 +192,9 @@
               input[type="radio"]:checked + .radio-label::after{
                 opacity: 1;
               }
+
+    // Result Table Container
+      .result-table-container{
+        padding: 25px;
+      }
+      
