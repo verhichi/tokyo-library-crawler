@@ -1,8 +1,11 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+import App from './app/app';
+
 import './normalize.css';
 
 ReactDOM.render(
-     <h1>YEAH</h1>
+     <App/>
     ,document.getElementById('root')
 )
