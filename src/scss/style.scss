@@ -60,3 +60,14 @@
           border-radius: 2px;
           padding: 25px;
         }
+
+        // Input Container
+          .input-container{
+            border-bottom: 1px solid $white-color;
+
+            &:last-child{
+              border-bottom: none;
+            }
+          }
+
+          
