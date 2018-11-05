@@ -2,3 +2,15 @@
 
 @import "./variable";
 @import "./font";
+
+// Box sizing
+*,
+*::after,
+*::before{
+  box-sizing: inherit;
+  font-family: "ColabThin";
+}
+
+html{
+  box-sizing: border-box;
+}
