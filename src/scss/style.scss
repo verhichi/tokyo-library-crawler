@@ -1,1 +1,7 @@
 // compileCompressed: ../style.min.css
+
+@import "./variable";
+
+h1{
+  color: $primary-color;
+}
