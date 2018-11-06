@@ -8,6 +8,8 @@ export default class Search extends Component{
   render(){
     return (
       <div className="hero-image">
+        <div className="search-container">
+        </div>
       </div>
     );
   }
