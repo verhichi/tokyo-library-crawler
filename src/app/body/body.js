@@ -3,6 +3,15 @@ import React, {Component} from 'react';
 import Search from './search/search';
 import Result from './result/result';
 
+
+/**
+ * Body - A component containing the "Search" and "Result" Component.
+ * @Parent Component - "App"
+ *
+ * @state {Object[]} crawl_result_array - array of search result object
+ *
+ * @props -
+ */
 export default class Body extends Component{
   constructor(props){
     super(props);
