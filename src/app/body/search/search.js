@@ -9,6 +9,12 @@ export default class Search extends Component{
     return (
       <div className="hero-image">
         <div className="search-container">
+
+          <div className="input-container">
+            <h1>Search for keyword:</h1>
+            <input className="keyword-input-field" type="text" autoComplete="off"/>
+          </div>
+
         </div>
       </div>
     );
