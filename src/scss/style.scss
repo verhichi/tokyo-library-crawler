@@ -1,0 +1,249 @@
+// compileCompressed: ../style.min.css
+
+// IMPORTS
+  @import "./variable";
+  @import "./font";
+
+// GENERAL PROPERTIES
+  // Box sizing
+    *,
+    *::after,
+    *::before{
+      box-sizing: inherit;
+      font-family: "ColabThin";
+    }
+
+    html{
+      box-sizing: border-box;
+    }
+
+  // Height
+    html,
+    body{
+      height: 100%;
+    }
+
+// REACT ROOT ELEMENT
+  #root{
+    min-height: 100%;
+  }
+
+// ELEMENT SPECIFIC PROPERTIES
+  // Header
+    header{
+      background: $header-background-color;
+      color: $white-color;
+      height: 50px;
+      text-align: left;
+    }
+
+  // Footer
+    footer{
+      background: $black-color;
+      height: 100px;
+    }
+
+  // Main
+    main{
+      min-height: 100%;
+    }
+
+    // Hero-image
+      .hero-image{
+        align-items: center;
+        background-image: url("./images/book.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+        display: flex;
+        height: 85%;
+        padding: 25px;
+      }
+
+      // Search Container
+        .search-container{
+          background: $search-container-color;
+          border-radius: 2px;
+          color: $white-color;
+          padding: 25px;
+        }
+
+        // Search Button
+          .search-button{
+            background: $primary-color;
+            border: none;
+            border-radius: 2px;
+            color: $white-color;
+            font-size: 32px;
+            height: 64px;
+            width: 100%;
+
+            &:active{
+              background: $primary-color-active;
+            }
+
+            &:disabled{
+              background: $secondary-color;
+            }
+          }
+
+
+          // Input Container
+            .input-container{
+              border-bottom: 1px solid $white-color;
+
+              &:last-child{
+                border-bottom: none;
+              }
+            }
+
+            // Keyword Input Field
+              .keyword-input-field{
+                border: none;
+                border-radius: 2px;
+                font-size: 24px;
+                height: 64px;
+                margin: 3px 0 16px 0;
+                outline: 0;
+                padding: 5px;
+                width: 100%;
+              }
+
+            // Radio and Checkbox
+              input[type="checkbox"],
+              input[type="radio"]{
+                display: none;
+              }
+
+              .checkbox-container,
+              .radio-container{
+                padding: 5px;
+              }
+
+              .checkbox-label,
+              .radio-label{
+                border: 2px solid transparent;
+                border-radius: 2px;
+                color: $white-color;
+                cursor: pointer;
+                display: inline-block;
+                font-size: 20px;
+                font-weight: bold;
+                height: 46px;
+                line-height: 30px;
+                margin-right: 5px;
+                padding: 5px 10px 5px 40px;
+                position: relative;
+
+                &:hover{
+                  background: $checkbox-hover-color;
+                }
+              }
+
+              .checkbox-label::before{
+                border: 2px solid $white-color;
+                border-radius: 3px;
+                content: '';
+                display: block;
+                height: 20px;
+                left: 10px;
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                width: 20px;
+              }
+
+              .checkbox-label::after{
+                border-bottom: 3px solid $white-color;
+                border-left: 3px solid $white-color;
+                content: '';
+                display: block;
+                height: 8px;
+                left: 13px;
+                opacity: 0;
+                position: absolute;
+                top: 50%;
+                transform: translateY(-70%) rotate(-45deg);
+                width: 14px;
+              }
+
+              .radio-label::before{
+                border: 2px solid $white-color;
+                border-radius: 50%;
+                content: '';
+                display: block;
+                height: 20px;
+                left: 10px;
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                width: 20px;
+              }
+
+              .radio-label::after{
+                border: 5px solid $white-color;
+                border-radius: 50%;
+                content: '';
+                display: block;
+                height: 5px;
+                left: 15px;
+                opacity: 0;
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                width: 5px;
+              }
+
+              input[type="checkbox"]:checked + .checkbox-label::after,
+              input[type="radio"]:checked + .radio-label::after{
+                opacity: 1;
+              }
+
+    // Result Table Container
+      .result-table-container{
+        padding: 25px;
+      }
+
+      // Result Table
+        .result-table{
+          border: 1px solid $table-border-color;
+          border-collapse: separate;
+          border-radius: 3px;
+          border-spacing: 0;
+          margin: 25px;
+          width: 100%;
+
+          th,
+          td{
+            padding: 10px;
+          }
+
+          th:last-child,
+          td:last-child{
+            border-right: none;
+          }
+
+          th{
+            background: $primary-color;
+            color: $white-color;
+            font-size: 32px;
+          }
+
+          td{
+            border-bottom: 1px solid $table-border-color;
+            border-right: 1px solid $table-border-color;
+            font-size: 24px;
+          }
+
+          tr:nth-child(2n){
+            background: $tertiary-color;
+          }
+        }
+
+    // No Result Container
+      .no-result-container{
+        color: $secondary-color;
+        font-size: 150%;
+        font-weight: bold;
+        text-align: center;
+        text-shadow: 0px 1px 1px #c0c0c0;
+      }
