@@ -1,5 +1,17 @@
 import React, {Component} from 'react';
 
+
+/**
+ *  Search - A component that lists the search options, keyword field, and the search button.
+ *  Parent Components - "Body"
+ *
+ *  @state {String}   keyword         - search keyword
+ *         {String}   search_type     - search type(represented by a value)
+ *         {String[]} checked_library - array of libraries to search(each represented by a value)
+ *
+ *  @props {Function} crawlLibrary    - Function used to crawl the library
+ *
+ */
 export default class Search extends Component{
   constructor(props){
     super(props);
