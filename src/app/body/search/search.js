@@ -27,6 +27,26 @@ export default class Search extends Component{
             </span>
           </div>
 
+          <div className="input-container">
+            <h2>Search libraries in the followin wards:</h2>
+            <span>
+              <input type="checkbox"/>
+              <label className="checkbox-label">Ward1</label>
+            </span>
+            <span>
+              <input type="checkbox"/>
+              <label className="checkbox-label">Ward2</label>
+            </span>
+            <span>
+              <input type="checkbox"/>
+              <label className="checkbox-label">Ward3</label>
+            </span>
+            <span>
+              <input type="checkbox"/>
+              <label className="checkbox-label">Ward4</label>
+            </span>
+          </div>
+
         </div>
       </div>
     );
