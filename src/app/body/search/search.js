@@ -47,6 +47,8 @@ export default class Search extends Component{
             </span>
           </div>
 
+          <button className="search-button">SEARCH</button>
+
         </div>
       </div>
     );
