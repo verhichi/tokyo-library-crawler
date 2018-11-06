@@ -144,17 +144,17 @@ export default class Search extends Component{
         <div className="search-container">
 
           <div className="input-container">
-            <h1>Search for keyword:</h1>
+            <h1 className="input-title">Search for keyword:</h1>
             <input className="keyword-input-field" type="text" autoComplete="off" onChange={this.onTextChangeHandler}/>
           </div>
 
           <div className="input-container">
-            <h2>Search with keyword as:</h2>
+            <h2 className="input-title">Search with keyword as:</h2>
             {search_type_ele_array}
           </div>
 
           <div className="input-container">
-            <h2>Search libraries in the following wards:</h2>
+            <h2 className="input-title">Search libraries in the following wards:</h2>
             {library_ele_array}
           </div>
 
