@@ -65,6 +65,17 @@ export default class Search extends Component{
   }
 
 
+  /**
+   * onButtonClickHandler - Starts the search
+   *
+   * @param  {Event Object} e - event object; in this case, the search button.
+   * @return -
+   */
+  onButtonClickHandler(e){
+    this.props.crawlLibrary(this.state.keyword, this.state.search_type, this.state.checked_library);
+  }
+
+
   render(){
     return (
       <div className="hero-image">
