@@ -91,7 +91,7 @@
             .input-container{
               border-bottom: 1px solid $white-color;
 
-              &:last-child{
+              &:last-of-type{
                 border-bottom: none;
               }
             }
