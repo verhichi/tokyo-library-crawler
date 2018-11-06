@@ -27,8 +27,8 @@ export default class Body extends Component{
   render(){
     return (
       <main>
-        <Search/>
-        <Result/>
+        <Search crawlLibrary={this.crawlLibrary}/>
+        <Result crawl_result_array={this.state.crawl_result_array}/>
       </main>
     );
   }
