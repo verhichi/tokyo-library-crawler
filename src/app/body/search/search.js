@@ -99,7 +99,6 @@ export default class Search extends Component{
 
 
   render(){
-
     // Array of search type element
     const search_type_ele_array = this.search_type_array.map((obj) => {
       const radio_label = obj.type;
@@ -114,7 +113,6 @@ export default class Search extends Component{
         </span>
       );
     });
-
 
     // Array of library element
     const library_ele_array = this.library_array.map((obj) => {
@@ -131,6 +129,7 @@ export default class Search extends Component{
       );
     });
 
+    const is_disabled = this.state.keyword.length === 0 || this.state.checked_library.length === 0; // disables search button when there are no keywords or no libraries have been checked.
 
     return (
       <div className="hero-image">
@@ -151,7 +150,7 @@ export default class Search extends Component{
             {library_ele_array}
           </div>
 
-          <button className="search-button">SEARCH</button>
+          <button className="search-button" disabled={is_disabled} onClick={onButtonClickHandler}>SEARCH</button>
 
         </div>
       </div>
