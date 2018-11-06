@@ -61,7 +61,7 @@
         background-size: cover;
         display: flex;
         height: 85%;
-        padding: 25px;
+        padding: 100px;
       }
 
       // Search Container
@@ -101,6 +101,11 @@
                 border-bottom: none;
               }
             }
+
+            // Input Field Title
+              .input-title{
+                margin: 3px 0;
+              }
 
             // Keyword Input Field
               .keyword-input-field{
