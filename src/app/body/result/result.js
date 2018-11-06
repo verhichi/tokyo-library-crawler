@@ -7,7 +7,9 @@ export default class Result extends Component{
 
   render(){
     return (
-      <div>Result</div>
+      <div className="result-table-container">
+
+      </div>
     );
   }
 }
