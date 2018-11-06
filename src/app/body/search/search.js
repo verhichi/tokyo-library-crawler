@@ -15,6 +15,11 @@ import React, {Component} from 'react';
 export default class Search extends Component{
   constructor(props){
     super(props);
+    this.state = {
+      keyword:         '',
+      search_type:     '0',
+      checked_library: []
+    }
   }
 
   render(){
