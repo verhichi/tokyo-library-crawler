@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component, Fragment} from 'react';
 
 import Header from './header/header';
 import Body from './body/body';
@@ -11,11 +11,11 @@ export default class App extends Component{
 
   render(){
     return (
-      <div>
+      <Fragment>
         <Header/>
         <Body/>
         <Footer/>
-      </div>
+      </Fragment>
     );
   }
 }
