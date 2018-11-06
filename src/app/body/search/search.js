@@ -26,6 +26,26 @@ export default class Search extends Component{
 
 
   /**
+   * getSearchTypeList - sends GET request to retrieve an array of search types.
+   *
+   * @return {Object[]} - array of search_type Objects.
+   */
+  getSearchTypeList(){
+    return [{'0': 'Title'}, {'1': 'Artist'}];
+  }
+
+
+  /**
+   * getLibraryList - sends GET request to retrieve an array of libraries.
+   *
+   * @return {Object[]} - array of library objects.
+   */
+  getLibraryList(){
+    return [{'1': {'name_en': 'Chuuou'}}, {'2': {'name_en': 'Katsushika'}}];
+  }
+
+
+  /**
    * onTextChangeHandler - Sets the "keyword" state to the value in the keyword field
    *
    * @param  {Event Object} e - event object; in this case, the keyword input field
