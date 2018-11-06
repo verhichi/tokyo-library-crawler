@@ -8,7 +8,7 @@ export default class Result extends Component{
   render(){
     return (
       <div className="result-table-container">
-
+        <h1>Found: 8 result(s)</h1>
       </div>
     );
   }
