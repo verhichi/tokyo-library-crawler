@@ -35,8 +35,19 @@ export default class Search extends Component{
 
 
   /**
-   * onCheckHandler - Adds the checked library key to the "checked_library" state.
-   *                  Removes the value if already checked.
+   * onRadioHandler - Sets the "search_type" state to the value of the radio box
+   *
+   * @param  {Event object} e - event object; in this case, the radio box
+   * @return -
+   */
+  onRadioHandler(e){
+    this.setState(search_type: e.target.value);
+  }
+
+
+  /**
+   * onCheckHandler - Adds the checked library key to the "checked_library" state
+   *                  Removes the value if already checked
    *
    * @param  {Event Object} e - event object; in this case, the checkbox
    * @return -
