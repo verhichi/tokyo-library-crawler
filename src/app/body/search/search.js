@@ -154,7 +154,7 @@ export default class Search extends Component{
           </div>
 
           <div className="input-container">
-            <h2>Search libraries in the followin wards:</h2>
+            <h2>Search libraries in the following wards:</h2>
             {library_ele_array}
           </div>
 
