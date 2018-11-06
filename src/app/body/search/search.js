@@ -126,14 +126,7 @@ export default class Search extends Component{
 
           <div className="input-container">
             <h2>Search with keyword as:</h2>
-            <span>
-              <input type="radio"/>
-              <label className="radio-label">Title</label>
-            </span>
-            <span>
-              <input type="radio"/>
-              <label className="radio-label">Artist</label>
-            </span>
+            {search_type_ele_array}
           </div>
 
           <div className="input-container">
