@@ -37,31 +37,7 @@ export default class Result extends Component{
             <th>Artist</th>
           </thead>
           <tbody>
-            <tr>
-              <td>TITLE1</td>
-              <td><a href="#" target="_blank">Link1</a></td>
-              <td>ARTIST NAME1</td>
-            </tr>
-            <tr>
-              <td>TITLE2</td>
-              <td><a href="#" target="_blank">Link2</a></td>
-              <td>ARTIST NAME2</td>
-            </tr>
-            <tr>
-              <td>TITLE3</td>
-              <td><a href="#" target="_blank">Link3</a></td>
-              <td>ARTIST NAME3</td>
-            </tr>
-            <tr>
-              <td>TITLE4</td>
-              <td><a href="#" target="_blank">Link4</a></td>
-              <td>ARTIST NAME4</td>
-            </tr>
-            <tr>
-              <td>TITLE5</td>
-              <td><a href="#" target="_blank">Link5</a></td>
-              <td>ARTIST NAME5</td>
-            </tr>
+            {search_result_ele_array}
           </tbody>
         </table>
       </div>
