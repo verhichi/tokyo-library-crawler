@@ -22,6 +22,27 @@ export default class Search extends Component{
     }
   }
 
+
+  /**
+   * onCheckHandler - Adds the checked library key to the "checked_library" state.
+   *                  Removes the value if already checked.
+   *
+   * @param  {Event Object} e - event object; in this case, the checkbox
+   * @return -
+   */
+  onCheckHandler(e){
+    const checkbox_value = e.target.value;
+    const checked_library = this.state.checked_library;
+    const library_index = checked_library.indexOf(checkbox_value);
+
+    if (library_index === -1){
+      this.setState({checked_library: checked_library.push(checkbox_value).sort()});
+    } else {
+      this.setState({checked_library: checked_library.splice(library_index, 1)});
+    }
+  }
+
+
   render(){
     return (
       <div className="hero-image">
