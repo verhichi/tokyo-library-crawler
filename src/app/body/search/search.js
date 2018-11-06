@@ -31,7 +31,7 @@ export default class Search extends Component{
    * @return {Object[]} - array of search_type Objects.
    */
   getSearchTypeList(){
-    return [{'0': 'Title'}, {'1': 'Artist'}];
+    return [{'key': '0', 'type': 'Title'}, {'key': '1', 'type': 'Artist'}];
   }
 
 
@@ -100,7 +100,20 @@ export default class Search extends Component{
 
   render(){
 
+    // Array of search type element
+    const search_type_radio_ele = this.search_type_array.map((obj) => {
+      const radio_label = obj.type;
+      const radio_value = obj.key;
+      const radio_id    = `id_radio_${obj.key}`;
+      const is_checked  = this.state.search_type == obj.key;
 
+      return (
+        <span>
+          <input id={radio_id} type="radio" name="type" value={radio_value} checked={is_checked} onChange={this.onRadioHandler}/>
+          <label className="radio-label" htmlFor={radio_id}>{radio_label}</label>
+        </span>
+      );
+    });
 
     return (
       <div className="hero-image">
