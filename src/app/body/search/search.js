@@ -15,6 +15,18 @@ export default class Search extends Component{
             <input className="keyword-input-field" type="text" autoComplete="off"/>
           </div>
 
+          <div className="input-container">
+            <h2>Search with keyword as:</h2>
+            <span>
+              <input type="radio"/>
+              <label className="radio-label">Title</label>
+            </span>
+            <span>
+              <input type="radio"/>
+              <label className="radio-label">Artist</label>
+            </span>
+          </div>
+
         </div>
       </div>
     );
