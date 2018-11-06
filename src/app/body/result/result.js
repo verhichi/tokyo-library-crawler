@@ -1,5 +1,14 @@
 import React, {Component} from 'react';
 
+
+/**
+ * Result - Component that lists all the result acquired from the search as a table. Shows a "no result" message when there are 0 results.
+ * Parent Components - "Body"
+ *
+ *  @state -
+ *
+ *  @props {Object[]} crawl_result_array - An array of the result of the search.
+ */
 export default class Result extends Component{
   constructor(props){
     super(props);
