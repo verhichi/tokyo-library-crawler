@@ -19,7 +19,9 @@ export default class Search extends Component{
       keyword:         '',
       search_type:     '0',
       checked_library: []
-    }
+    };
+    this.search_type_array = this.getSearchTypeList();
+    this.library_array = this.getLibraryList();
   }
 
 
@@ -77,6 +79,9 @@ export default class Search extends Component{
 
 
   render(){
+
+
+
     return (
       <div className="hero-image">
         <div className="search-container">
