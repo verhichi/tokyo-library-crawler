@@ -41,7 +41,7 @@ export default class Search extends Component{
    * @return {Object[]} - array of library objects.
    */
   getLibraryList(){
-    return [{'1': {'name_en': 'Chuuou'}}, {'2': {'name_en': 'Katsushika'}}];
+    return [{'key': '0', 'name_en': 'Chuuou'}, {'key': '1', 'name_en': 'Katsushika'}];
   }
 
 
@@ -111,6 +111,22 @@ export default class Search extends Component{
         <span>
           <input id={radio_id} type="radio" name="type" value={radio_value} checked={is_checked} onChange={this.onRadioHandler}/>
           <label className="radio-label" htmlFor={radio_id}>{radio_label}</label>
+        </span>
+      );
+    });
+
+
+    // Array of library element
+    const library_ele_array = this.library_array.map((obj) => {
+      const checkbox_value = obj.key;
+      const checkbox_id    = `id_check_${obj.key}`;
+      const checkbox_label = obj.name_en;
+      const is_checked     = this.state.checked_library.includes(checkbox_id);
+
+      return (
+        <span>
+          <input id={checkbox_id} type="checkbox" value={checkbox_value} checked={is_checked} onClick={this.onCheckHandler}/>
+          <label className="checkbox-label" htmlFor={checkbox_id}>{checkbox_label}</label>
         </span>
       );
     });
