@@ -52,7 +52,7 @@ export default class Search extends Component{
    * @return -
    */
   onTextChangeHandler(e){
-    this.setState(keyword: e.target.value);
+    this.setState({keyword: e.target.value});
   }
 
 
@@ -63,7 +63,7 @@ export default class Search extends Component{
    * @return -
    */
   onRadioHandler(e){
-    this.setState(search_type: e.target.value);
+    this.setState({search_type: e.target.value});
   }
 
 
@@ -150,7 +150,7 @@ export default class Search extends Component{
             {library_ele_array}
           </div>
 
-          <button className="search-button" disabled={is_disabled} onClick={onButtonClickHandler}>SEARCH</button>
+          <button className="search-button" disabled={is_disabled} onClick={this.onButtonClickHandler}>SEARCH</button>
 
         </div>
       </div>
