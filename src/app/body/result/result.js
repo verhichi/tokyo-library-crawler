@@ -15,6 +15,18 @@ export default class Result extends Component{
   }
 
   render(){
+
+    // Creates an array of each row in the table using the search result.
+    const search_result_ele_array = this.props.crawl_result_array.map((result, idx) => {
+      return (
+        <tr key={idx}>
+          <td>{result.library}</td>
+          <td><a href={result.link}>{result.title}</a></td>
+          <td>{result.artist}</td>
+        </tr>
+      );
+    });
+
     return (
       <div className="result-table-container">
         <h1>Found: 5 result(s)</h1>
