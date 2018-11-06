@@ -101,7 +101,7 @@ export default class Search extends Component{
   render(){
 
     // Array of search type element
-    const search_type_radio_ele = this.search_type_array.map((obj) => {
+    const search_type_ele_array = this.search_type_array.map((obj) => {
       const radio_label = obj.type;
       const radio_value = obj.key;
       const radio_id    = `id_radio_${obj.key}`;
