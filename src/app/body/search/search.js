@@ -24,6 +24,17 @@ export default class Search extends Component{
 
 
   /**
+   * onTextChangeHandler - Sets the "keyword" state to the value in the keyword field
+   *
+   * @param  {Event Object} e - event object; in this case, the keyword input field
+   * @return -
+   */
+  onTextChangeHandler(e){
+    this.setState(keyword: e.target.value);
+  }
+
+
+  /**
    * onCheckHandler - Adds the checked library key to the "checked_library" state.
    *                  Removes the value if already checked.
    *
