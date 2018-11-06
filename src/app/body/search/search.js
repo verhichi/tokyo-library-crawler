@@ -22,6 +22,11 @@ export default class Search extends Component{
     };
     this.search_type_array = this.getSearchTypeList();
     this.library_array = this.getLibraryList();
+
+    this.onTextChangeHandler = this.onTextChangeHandler.bind(this);
+    this.onRadioHandler = this.onRadioHandler.bind(this);
+    this.onCheckHandler = this.onCheckHandler.bind(this);
+    this.onButtonClickHandler = this.onButtonClickHandler.bind(this);
   }
 
 
@@ -76,14 +81,17 @@ export default class Search extends Component{
    */
   onCheckHandler(e){
     const checkbox_value = e.target.value;
-    const checked_library = this.state.checked_library;
+    let checked_library = this.state.checked_library;
     const library_index = checked_library.indexOf(checkbox_value);
 
     if (library_index === -1){
-      this.setState({checked_library: checked_library.push(checkbox_value).sort()});
+      checked_library.push(checkbox_value);
+      checked_library.sort();
     } else {
-      this.setState({checked_library: checked_library.splice(library_index, 1)});
+      checked_library.splice(library_index, 1);
     }
+
+    this.setState({checked_library: checked_library});
   }
 
 
@@ -93,7 +101,7 @@ export default class Search extends Component{
    * @param  {Event Object} e - event object; in this case, the search button.
    * @return -
    */
-  onButtonClickHandler(e){
+  onButtonClickHandler(){
     this.props.crawlLibrary(this.state.keyword, this.state.search_type, this.state.checked_library);
   }
 
@@ -103,8 +111,8 @@ export default class Search extends Component{
     const search_type_ele_array = this.search_type_array.map((obj, idx) => {
       const radio_label = obj.type;
       const radio_value = obj.key;
-      const radio_id    = `id_radio_${obj.key}`;
-      const is_checked  = this.state.search_type == obj.key;
+      const radio_id = `id_radio_${obj.key}`;
+      const is_checked = this.state.search_type == obj.key;
 
       return (
         <span key={idx}>
@@ -117,13 +125,13 @@ export default class Search extends Component{
     // Array of library element
     const library_ele_array = this.library_array.map((obj, idx) => {
       const checkbox_value = obj.key;
-      const checkbox_id    = `id_check_${obj.key}`;
+      const checkbox_id = `id_check_${obj.key}`;
       const checkbox_label = obj.name_en;
-      const is_checked     = this.state.checked_library.includes(checkbox_id);
+      const is_checked = this.state.checked_library.includes(checkbox_value);
 
       return (
         <span key={idx}>
-          <input id={checkbox_id} type="checkbox" value={checkbox_value} checked={is_checked} onClick={this.onCheckHandler}/>
+          <input id={checkbox_id} type="checkbox" name="library" value={checkbox_value} checked={is_checked} onChange={this.onCheckHandler}/>
           <label className="checkbox-label" htmlFor={checkbox_id}>{checkbox_label}</label>
         </span>
       );
@@ -137,7 +145,7 @@ export default class Search extends Component{
 
           <div className="input-container">
             <h1>Search for keyword:</h1>
-            <input className="keyword-input-field" type="text" autoComplete="off"/>
+            <input className="keyword-input-field" type="text" autoComplete="off" onChange={this.onTextChangeHandler}/>
           </div>
 
           <div className="input-container">
