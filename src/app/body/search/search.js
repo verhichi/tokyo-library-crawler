@@ -7,7 +7,8 @@ export default class Search extends Component{
 
   render(){
     return (
-      <div>SEARCH</div>
+      <div className="hero-image">
+      </div>
     );
   }
 }
