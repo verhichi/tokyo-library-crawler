@@ -31,25 +31,37 @@ export default class Body extends Component{
    * @return -          no return value
    */
   crawlLibrary(keyword, search_type, checked_library){
-    // query object to send with request
-    const query_obj = {
-      keyword,
-      search_type,
-      checked_library
-    };
+
+    // empty the array before crawling
+    this.setState({crawl_result_array: []});
+
+    checked_library.forEach((library_key) => {
+      // query object to send with request
+      const query_obj = {
+        keyword,
+        search_type,
+        library_key
+      };
+
+      request
+        .get('/rest/crawl')
+        .query({search_option: query_obj})
+        .end((err, res) => {
+          if(err){
+            console.log('Superagent ERROR');
+            return
+          }
+          this.setState({crawl_result_array: this.state.crawl_result_array.concat(res.body.result)});
+        });
+      }
+    });
+
+
 
     // Send GET request to server via /crawl uri
     // Receive search result
-    request
-      .get('/rest/crawl')
-      .query({search_option: query_obj})
-      .end((err, res) => {
-        if(err){
-          console.log('Superagent ERROR');
-          return
-        }
-        this.setState({crawl_result_array: res.body.result});
-      });
+
+
   }
 
 
