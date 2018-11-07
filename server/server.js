@@ -9,7 +9,7 @@ const express = require('express') // import express framework
 const app = express();             // instantiate express
 const port = 3000;                 // set default port number
 
-const body_parser = require('body_parser');        // import body-parser
+const body_parser = require('body-parser');        // import body-parser
 app.use(body_parser.urlencoded({extended: true})); // use body-parser
 app.use(body_parser.json());                       // parse body to json
 
