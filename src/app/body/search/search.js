@@ -36,6 +36,13 @@ export default class Search extends Component{
   }
 
 
+  // Set search_type_array and library_array values before mounting.
+  componentWillMount(){
+    this.getSearchTypeList();
+    this.getLibraryList();
+  }
+
+
   /**
    * getSearchTypeList - sends GET request to retrieve an array of search types.
    *
@@ -129,9 +136,6 @@ export default class Search extends Component{
 
 
   render(){
-
-    this.getSearchTypeList();
-    this.getLibraryList();
 
     // Array of search type element
     const search_type_ele_array = this.state.search_type_array.map((obj, idx) => {
