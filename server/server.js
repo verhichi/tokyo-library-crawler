@@ -33,7 +33,7 @@ const path = require('path');                  // import path object
 
 app.use(express.static(path.join(__dirname, '../build'))); // Set path for file to ../build
 
-app.use('/', rest_routes); // REST routing
+app.use('/rest', rest_routes); // REST routing
 
 // Set Unknown URL to open index.html
 app.get('*', (req, res) => {
