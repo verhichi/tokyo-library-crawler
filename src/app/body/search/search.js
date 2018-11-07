@@ -134,7 +134,7 @@ export default class Search extends Component{
     this.getLibraryList();
 
     // Array of search type element
-    const search_type_ele_array = this.search_type_array.map((obj, idx) => {
+    const search_type_ele_array = this.state.search_type_array.map((obj, idx) => {
       const radio_label = obj.type;
       const radio_value = obj.key;
       const radio_id = `id_radio_${obj.key}`;
@@ -149,7 +149,7 @@ export default class Search extends Component{
     });
 
     // Array of library element
-    const library_ele_array = this.library_array.map((obj, idx) => {
+    const library_ele_array = this.state.library_array.map((obj, idx) => {
       const checkbox_value = obj.key;
       const checkbox_id = `id_check_${obj.key}`;
       const checkbox_label = obj.name_en;
