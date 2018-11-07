@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 
+import request from 'superagent';
+
 
 /**
  *  Search - A component that lists the search options, keyword field, and the search button.
@@ -36,7 +38,15 @@ export default class Search extends Component{
    * @return {Object[]} - array of search_type Objects.
    */
   getSearchTypeList(){
-    return [{'key': '0', 'type': 'Title'}, {'key': '1', 'type': 'Artist'}];
+    request
+      .get('/search_type')
+      .end((err, res) => {
+        if(err){
+          console.log('superagent ERROR!');
+          return
+        }
+        return res.body.result;
+      });
   }
 
 
@@ -46,7 +56,15 @@ export default class Search extends Component{
    * @return {Object[]} - array of library objects.
    */
   getLibraryList(){
-    return [{'key': '0', 'name_en': 'Chuuou'}, {'key': '1', 'name_en': 'Katsushika'}];
+    request
+      .get('/library')
+      .end((err, res) => {
+        if(err){
+          console.log('superagent ERROR!');
+          return
+        }
+        return res.body.result;
+      });
   }
 
 
