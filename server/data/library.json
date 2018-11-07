@@ -1,0 +1,203 @@
+[
+
+  {
+     "key": "1"
+    ,"name_en": "chuuou"
+    ,"name_jp": "中央"
+    ,"url": "https://www.library.city.chuo.tokyo.jp/detailsearch?1"
+    ,"formEle": "#id1"
+    ,"submitButEle": "input[name=\"buttonSubmit3\"]"
+    ,"keywordName": "textKey1"
+    ,"searchTypeEle": "selectItem1"
+    ,"searchByTitle": "AB"
+    ,"searchByArtist": "CD"
+    ,"pagerEle": ".pager:first-of-type"
+    ,"pageLinkEle": "li>a"
+    ,"pageLinkTextEle": "span"
+    ,"pageLinkText": "次へ >"
+    ,"selInNextPage": ""
+    ,"selNextPageSubmit": ""
+    ,"selNextPageForm": ""
+    ,"selNextPageVal": ""
+    ,"listUrlEle": ".num+a"
+    ,"listTitleEle": "h3 a"
+    ,"listArtistEle": ".box2>dl:first-child>dd"
+    ,"fields": {
+      "checkObjectBook": ""
+      ,"checkObjectAudio": "on"
+      ,"selectMaxView": 100
+    }
+  }
+
+  ,{
+     "key": "2"
+    ,"name_en": "katsushika"
+    ,"name_jp": "葛飾"
+    ,"url": "https://www.lib.city.katsushika.lg.jp/search.html"
+    ,"formEle": "form"
+    ,"submitButEle": "input[type=\"submit\"]"
+    ,"keywordName": "KEY1"
+    ,"searchTypeEle": "ITEM1"
+    ,"searchByTitle": "AB"
+    ,"searchByArtist": "CD"
+    ,"pagerEle": ".PAGER:first-of-type"
+    ,"pageLinkEle": "li>a"
+    ,"pageLinkTextEle": ""
+    ,"pageLinkText": "次へ >"
+    ,"selInNextPage": ""
+    ,"selNextPageSubmit": ""
+    ,"selNextPageForm": ""
+    ,"selNextPageVal": ""
+    ,"listUrlEle": "tbody a"
+    ,"listTitleEle": "tbody a"
+    ,"listArtistEle": "tbody td:nth-child(4)"
+    ,"fields": {
+      "BOOK": ""
+      ,"AV": "ON"
+      ,"MAXVIEW": 300
+    }
+  }
+
+  ,{
+     "key": "3"
+    ,"name_en": "koutou"
+    ,"name_jp": "江東"
+    ,"url": "https://www.koto-lib.tokyo.jp/opw/OPW/OPWSRCH2.CSP"
+    ,"formEle": "form[name=\"InForm\"]"
+    ,"submitButEle": "input[name=\"srchbtn2\"]"
+    ,"keywordName": "text(1)"
+    ,"searchTypeEle": "qual(1)"
+    ,"searchByTitle": "MZTI"
+    ,"searchByArtist": "MZAU"
+    ,"pagerEle": "table:nth-of-type(6)"
+    ,"pageLinkEle": "table td a"
+    ,"pageLinkTextEle": "font"
+    ,"pageLinkText": "次>>"
+    ,"selInNextPage": ""
+    ,"selNextPageSubmit": ""
+    ,"selNextPageForm": ""
+    ,"selNextPageVal": ""
+    ,"listUrlEle": "tr.lightcolor a, tr.basecolor a"
+    ,"listTitleEle": "tr.lightcolor td:nth-child(3), tr.basecolor td:nth-child(3)"
+    ,"listArtistEle": "tr.lightcolor td:nth-child(4), tr.basecolor td:nth-child(4)"
+    ,"fields": {
+      "LOCAL(\"LIB\",\"SK43\",\"3\",\"2\")": "on"
+      ,"LOCAL(\"LIB\",\"SK41\",\"3\")": "on"
+    }
+  }
+
+  ,{
+     "key": "4"
+    ,"name_en": "bunkyou"
+    ,"name_jp": "文京"
+    ,"url": "https://www.lib.city.bunkyo.tokyo.jp/opw/OPW/OPWSRCH2.CSP?DB=LIB"
+    ,"formEle": "form[name=\"InForm\"]"
+    ,"submitButEle": "input[name=\"srchbtn\"]"
+    ,"keywordName": "text(1)"
+    ,"searchTypeEle": "qual(1)"
+    ,"searchByTitle": "MZTI"
+    ,"searchByArtist": "MZAU"
+    ,"pagerEle": "table:nth-child(9)"
+    ,"pageLinkEle": "a"
+    ,"pageLinkTextEle": "font"
+    ,"pageLinkText": "次>>"
+    ,"selInNextPage": ""
+    ,"selNextPageSubmit": ""
+    ,"selNextPageForm": ""
+    ,"selNextPageVal": ""
+    ,"listUrlEle": "table:nth-child(10) tr td a"
+    ,"listTitleEle": "table:nth-child(10) tr td a"
+    ,"listArtistEle": "table:nth-child(10) tr td:nth-child(4)"
+    ,"fields": {
+      "LOCAL(\"LIB\",\"SK43\",\"3\",\"30\")": "on"
+      ,"LOCAL(\"LIB\",\"SK41\",\"5\")": "on"
+    }
+  }
+
+  ,{
+     "key": "5"
+    ,"name_en": "sumida"
+    ,"name_jp": "墨田"
+    ,"url": "https://www.library.sumida.tokyo.jp/DetailSearch?1"
+    ,"formEle": "form"
+    ,"submitButEle": "input[name=\"buttonSubmit3\"]"
+    ,"keywordName": "textKey1"
+    ,"searchTypeEle": "selectItem1"
+    ,"searchByTitle": "AB"
+    ,"searchByArtist": "CD"
+    ,"pagerEle": ".pager:first-of-type"
+    ,"pageLinkEle": "a"
+    ,"pageLinkTextEle": "span"
+    ,"pageLinkText": "次へ >"
+    ,"selInNextPage": ""
+    ,"selNextPageSubmit": ""
+    ,"selNextPageForm": ""
+    ,"selNextPageVal": ""
+    ,"listUrlEle": "h3>a"
+    ,"listTitleEle": "h3>a>span"
+    ,"listArtistEle": ""
+    ,"fields": {
+      "checkObjectBook": ""
+      ,"checkObjectAv": "on"
+      ,"selectMaxView": 100
+    }
+  }
+
+  ,{
+     "key": "6"
+    ,"name_en": "meguro"
+    ,"name_jp": "目黒"
+    ,"url": "https://www.meguro-library.jp/opw/OPW/OPWSRCH2.CSP?DB=LIB&MODE=1&FLG=RESET"
+    ,"formEle": "form[name=\"InForm\"]"
+    ,"submitButEle": "input[name=\"srchbtn\"]"
+    ,"keywordName": "text(1)"
+    ,"searchTypeEle": "qual(1)"
+    ,"searchByTitle": "MZTI"
+    ,"searchByArtist": "MZAU"
+    ,"pagerEle": "table:nth-child(10) .basemark"
+    ,"pageLinkEle": "a"
+    ,"pageLinkTextEle": "font"
+    ,"pageLinkText": "次>>"
+    ,"selInNextPage": ""
+    ,"selNextPageSubmit": ""
+    ,"selNextPageForm": ""
+    ,"selNextPageVal": ""
+    ,"listUrlEle": "table:nth-child(11) tr td a"
+    ,"listTitleEle": "table:nth-child(11) tr td a"
+    ,"listArtistEle": "table:nth-child(11) tr td:nth-child(3)"
+    ,"fields": {
+      "LOCAL(\"LIB\",\"SK43\",\"3\",\"1\")": "on"
+      ,"LOCAL(\"LIB\",\"SK41\",\"3\")": "on"
+    }
+  }
+
+  ,{
+     "key": "7"
+    ,"name_en": "oota"
+    ,"name_jp": "大田"
+    ,"url": "https://www.lib.city.ota.tokyo.jp/DetailSearch?2"
+    ,"formEle": "form.search"
+    ,"submitButEle": "input[name=\"buttonSubmit2\"]"
+    ,"keywordName": "textKey1"
+    ,"searchTypeEle": "selectItem1"
+    ,"searchByTitle": "AB"
+    ,"searchByArtist": "CD"
+    ,"pagerEle": ".number+.pager"
+    ,"pageLinkEle": "a"
+    ,"pageLinkTextEle": "span"
+    ,"pageLinkText": "次へ >"
+    ,"selInNextPage": ""
+    ,"selNextPageSubmit": ""
+    ,"selNextPageForm": ""
+    ,"selNextPageVal": ""
+    ,"listUrlEle": "table a"
+    ,"listTitleEle": "table a>span"
+    ,"listArtistEle": "table td:nth-child(4)"
+    ,"fields": {
+      "checkObjectBook": ""
+      ,"checkObjectAv": "on"
+      ,"selectMaxView": 300
+    }
+  }
+
+]
