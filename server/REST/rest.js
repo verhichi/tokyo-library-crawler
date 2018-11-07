@@ -42,7 +42,7 @@ router.get('/crawl', (req, res) => {
 
   console.log('Searching for keyword:', req.query.search_option.keyword);
 
-  const library = library_json.find((library) => library.key === req.query.search_option.checked_library);
+  const library = library_json.find((library) => library.key === req.query.search_option.library_key);
 
   let url_array    = [];
   let title_array  = [];

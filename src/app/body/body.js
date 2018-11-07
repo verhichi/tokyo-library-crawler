@@ -53,8 +53,9 @@ export default class Body extends Component{
           }
           this.setState({crawl_result_array: this.state.crawl_result_array.concat(res.body.result)});
         });
-      }
-    });
+      });
+
+    }
 
 
 
