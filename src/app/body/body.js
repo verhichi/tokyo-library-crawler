@@ -41,7 +41,7 @@ export default class Body extends Component{
     // Send GET request to server via /crawl uri
     // Receive search result
     request
-      .get('/crawl')
+      .get('/rest/crawl')
       .query({search_option: query_obj})
       .end((err, res) => {
         if(err){
