@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 
+import request from 'superagent';
+
 
 /**
  *  Search - A component that lists the search options, keyword field, and the search button.
