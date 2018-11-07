@@ -8,6 +8,7 @@ import React, {Component} from 'react';
  *  @state -
  *
  *  @props {Object[]} crawl_result_array - An array of the result of the search.
+ *         {Boolean}  is_crawling        - Boolean value that represents the current state of the web crawling.
  */
 export default class Result extends Component{
   constructor(props){
@@ -30,7 +31,7 @@ export default class Result extends Component{
       return (
         <tr key={idx}>
           <td>{result.library}</td>
-          <td><a href={result.link}>{result.title}</a></td>
+          <td><a href={result.link} target="_blank">{result.title}</a></td>
           <td>{result.artist}</td>
         </tr>
       );

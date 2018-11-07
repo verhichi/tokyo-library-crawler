@@ -11,13 +11,17 @@ import Result from './result/result';
  * @Parent Component - "App"
  *
  * @state {Object[]} crawl_result_array - array of search result object
+ *        {Boolean}  is_crawling        - Boolean value that represents the current state of the web crawling
  *
  * @props -
  */
 export default class Body extends Component{
   constructor(props){
     super(props);
-    this.state = {crawl_result_array: []};
+    this.state = {
+      crawl_result_array: [],
+      is_crawling: false
+    };
     this.crawlLibrary = this.crawlLibrary.bind(this);
   }
 
@@ -32,7 +36,12 @@ export default class Body extends Component{
    */
   crawlLibrary(keyword, search_type, checked_library){
     // empty the array before crawling
-    this.setState({crawl_result_array: []});
+    this.setState({
+      crawl_result_array: [],
+      is_crawling: true
+    });
+
+    let checked_library_count = 0;
 
     checked_library.forEach((library_key) => {
       // query object to send with request
@@ -51,6 +60,7 @@ export default class Body extends Component{
             return
           }
           this.setState({crawl_result_array: this.state.crawl_result_array.concat(res.body.result)});
+          if(++checked_library_count === checked_library.length) this.setState({is_crawling: false});
         });
       });
     }
@@ -58,8 +68,8 @@ export default class Body extends Component{
   render(){
     return (
       <main>
-        <Search crawlLibrary={this.crawlLibrary}/>
-        <Result crawl_result_array={this.state.crawl_result_array}/>
+        <Search crawlLibrary={this.crawlLibrary} is_crawling={this.state.is_crawling}/>
+        <Result crawl_result_array={this.state.crawl_result_array} is_crawling={this.state.is_crawling}/>
       </main>
     );
   }

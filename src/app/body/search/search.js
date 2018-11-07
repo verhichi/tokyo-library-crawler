@@ -14,6 +14,7 @@ import request from 'superagent';
  *         {String[]}   checked_library    - array of libraries to search(each represented by a value)
  *
  *  @props {Function} crawlLibrary    - Function used to crawl the library
+ *         {Boolean}  is_crawling     - Boolean value that represents the current state of the web crawling.
  *
  */
 export default class Search extends Component{
@@ -168,7 +169,8 @@ export default class Search extends Component{
       );
     });
 
-    const is_disabled = this.state.keyword.length === 0 || this.state.checked_library.length === 0; // disables search button when there are no keywords or no libraries have been checked.
+    // disables search button when the application is in the middle of web crawling or there are no keywords or no libraries have been checked.
+    const is_disabled = this.props.is_crawling || this.state.keyword.length === 0 || this.state.checked_library.length === 0;
 
     return (
       <div className="hero-image">
