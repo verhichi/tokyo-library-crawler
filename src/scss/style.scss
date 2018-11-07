@@ -80,6 +80,7 @@
             color: $white-color;
             font-size: 32px;
             height: 64px;
+            position: relative;
             width: 100%;
 
             &:active{
@@ -96,12 +97,15 @@
             .loading_symbol{
               animation: spin 1s infinite;
               border: 5px solid $white-color;
-              border-bottom: none;
+              border-bottom: 5px solid $secondary-color;
               border-radius: 50%;
-              display: inline-block;
-              height: 40px;
-              margin: 0 10px;
-              width: 40px;
+              bottom: 0;
+              height: 45px;
+              margin: auto 15px;
+              position: absolute;
+              right: 0;
+              top: 0;
+              width: 45px;
             }
 
             @keyframes spin{
