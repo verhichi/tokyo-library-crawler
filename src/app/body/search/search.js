@@ -41,7 +41,6 @@ export default class Search extends Component{
   componentWillMount(){
     if(this.state.search_type_array.length === 0) this.getSearchTypeList();
     if(this.state.library_array.length === 0) this.getLibraryList();
-    }
   }
 
 
