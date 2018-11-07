@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 
+import request from 'superagent';
+
 import Search from './search/search';
 import Result from './result/result';
 
