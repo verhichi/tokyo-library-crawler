@@ -36,3 +36,9 @@ router.get('/crawl', (req, res) => {
   const result = [{library: "lib1", title: "title1", link: "www.google.com", artist: "artist1"}, {library: "lib2", title: "title2", link: "www.yahoo.com", artist: "artist2"}];
   res.json({result});
 });
+
+
+/******************************************************************************
+ *                                 Export Module
+ ******************************************************************************/
+module.exports = router;
