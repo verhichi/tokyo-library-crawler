@@ -96,7 +96,7 @@
             .loading_symbol{
               animation: spin 1s infinite;
               border: 5px solid $white-color;
-              border-bottom: transparent;
+              border-bottom: none;
               border-radius: 50%;
               display: inline-block;
               margin: 0 10px;

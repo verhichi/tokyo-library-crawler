@@ -174,7 +174,7 @@ export default class Search extends Component{
 
     // Show loading spinning icon when application is crawling
     let button_loading_ele = null;
-    if(this.props.is_crawling) button_loading_ele = <div className="loading_symbol">X</div>;
+    if(this.props.is_crawling) button_loading_ele = <div className="loading_symbol"></div>;
 
     return (
       <div className="hero-image">
