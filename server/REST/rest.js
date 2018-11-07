@@ -39,8 +39,69 @@ router.get('/search_type', (req, res) => {
 // GET search result from scraping the library websites
 router.get('/crawl', (req, res) => {
   console.log('Request GET /rest/crawl');
-  const result = [{library: "lib1", title: "title1", link: "www.google.com", artist: "artist1"}, {library: "lib2", title: "title2", link: "www.yahoo.com", artist: "artist2"}];
-  res.json({result});
+
+  console.log('Searching for keyword:', req.query.search_option.keyword);
+
+  const library = library_json.find((library) => library.key === req.query.search_option.checked_library);
+
+  let url_array    = [];
+  let title_array  = [];
+  let artist_array = [];
+  let media_array  = [];
+
+  let next_page_link;
+  let search_option = library.fields;
+
+  search_option[library.keywordName] = req.query.search_option.keyword;
+  search_option[library.searchTypeEle] = req.query.search_option.search_type == '0' ? library.searchByTitle : library.searchByArtist;
+
+  let land_page = cheerio.fetchSync(library.url).$;
+  let $ = land_page.$;
+
+  $(library.formEle).field(search_option);
+
+  land_page = $(library.submitButEle).clickSync();
+
+  do {
+    $ = land_page.$;
+
+    // Get media information
+    url_array =    $(library.listUrlEle).toArray().map(ele =>    $(ele).url()  ) || [];
+    title_array =  $(library.listTitleEle).toArray().map(ele =>  $(ele).text() ) || [];
+    artist_array = $(library.listArtistEle).toArray().map(ele => $(ele).text() ) || [];
+
+    // Create media object containing library name, title, artist, and link to site
+    url_array.forEach((url, idx) => {
+      console.log(++count);
+      media_array.push({
+         library: library.name_jp
+        ,title:  title_array[idx]
+        ,artist: artist_array[idx]
+        ,link:   url
+      });
+    });
+
+    // Get next link for next page
+    let next_page_link = undefined;
+    $(library.pagerEle).find(library.pageLinkEle).toArray().forEach((ele) => {
+      if(library.pageLinkTextEle){
+        const text = $(ele).find(library.pageLinkTextEle).text().trim();
+        if(text === library.pageLinkText) next_page_link = $(ele);
+      }else{
+        const text = $(ele).text().trim();
+        if(text === library.pageLinkText) next_page_link = $(ele);
+      }
+    });
+
+    //TODO: SO FAR IT STOPS WORKING HERE WHEN THE PAGE VALUE IS UNDEFINED
+    if(next_page_link){
+      console.log('going to next page');
+      land_page = next_page_link.clickSync();
+    }
+
+  }while(next_page_link);
+
+  res.json({result: media_array});
 });
 
 
