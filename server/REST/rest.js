@@ -15,3 +15,9 @@ const search_type_json = require('../data/search_type.json'); // json file of se
 /******************************************************************************
  *                                 Routes
  ******************************************************************************/
+
+// GET Library data
+router.get('/library', (req, res) => {
+  console.log('Request GET /library');
+  res.json({result: library_json});
+});
