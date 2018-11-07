@@ -28,3 +28,11 @@ router.get('/search_type', (req, res) => {
   console.log('Request GET /search_type');
   res.json({result: search_type_json});
 });
+
+
+// GET search result from scraping the library websites
+router.get('/crawl', (req, res) => {
+  console.log('Request GET /crawl');
+  const result = [{library: "lib1", title: "title1", link: "www.google.com", artist: "artist1"}, {library: "lib2", title: "title2", link: "www.yahoo.com", artist: "artist2"}];
+  res.json({result});
+});
