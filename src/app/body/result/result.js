@@ -8,7 +8,6 @@ import React, {Component} from 'react';
  *  @state -
  *
  *  @props {Object[]} crawl_result_array - An array of the result of the search.
- *         {Boolean}  is_crawling        - Boolean value that represents the current state of the web crawling.
  */
 export default class Result extends Component{
   constructor(props){
@@ -19,12 +18,6 @@ export default class Result extends Component{
 
     // Number of results
     const crawl_result_count = this.props.crawl_result_array.length;
-
-    if(this.state.is_crawling){
-      const loading_symbol_ele = <div className="loading-symbol"></div>;
-    } else {
-      const loading_symbol_ele = null;
-    }
 
     // Creates an array of each row in the table using the search result.
     const search_result_ele_array = this.props.crawl_result_array.map((result, idx) => {
@@ -55,10 +48,7 @@ export default class Result extends Component{
 
       return (
         <div className="result-table-container">
-          <div class="result-title">
-            <h1>Found: {crawl_result_count} result(s)</h1>
-            {loading_symbol_ele}
-          </div>
+          <h1>Found: {crawl_result_count} result(s)</h1>
           <table className="result-table">
             <thead>
               <th>Library</th>

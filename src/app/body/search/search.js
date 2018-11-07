@@ -172,6 +172,10 @@ export default class Search extends Component{
     // disables search button when the application is in the middle of web crawling or there are no keywords or no libraries have been checked.
     const is_disabled = this.props.is_crawling || this.state.keyword.length === 0 || this.state.checked_library.length === 0;
 
+    // Show loading spinning icon when application is crawling
+    let button_loading_ele = null;
+    if(this.props.is_crawling) button_loading_ele = <div class="loading_symbol_ele">X</div>;
+
     return (
       <div className="hero-image">
         <div className="search-container">
@@ -191,7 +195,7 @@ export default class Search extends Component{
             {library_ele_array}
           </div>
 
-          <button className="search-button" disabled={is_disabled} onClick={this.onButtonClickHandler}>SEARCH</button>
+          <button className="search-button" disabled={is_disabled} onClick={this.onButtonClickHandler}>SEARCH{button_loading_ele}</button>
 
         </div>
       </div>

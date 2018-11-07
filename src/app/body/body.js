@@ -69,7 +69,7 @@ export default class Body extends Component{
     return (
       <main>
         <Search crawlLibrary={this.crawlLibrary} is_crawling={this.state.is_crawling}/>
-        <Result crawl_result_array={this.state.crawl_result_array} is_crawling={this.state.is_crawling}/>
+        <Result crawl_result_array={this.state.crawl_result_array}/>
       </main>
     );
   }
