@@ -38,15 +38,13 @@ router.get('/search_type', (req, res) => {
 
 // GET search result from scraping the library websites
 router.get('/crawl', (req, res) => {
-  console.log('Request GET /rest/crawl');
-
-  console.log('Searching for keyword:', req.query.search_option.keyword);
-
+  cheerio.reset();
   const library = library_json.find((library) => library.key === req.query.search_option.library_key);
 
-  let url_array    = [];
-  let title_array  = [];
-  let artist_array = [];
+  console.log('Request GET /rest/crawl');
+  console.log('Searching for keyword:', req.query.search_option.keyword);
+  console.log(`Searching library: ${library.name_en} / ${library.name_jp}`);
+
   let media_array  = [];
 
   let next_page_link;
@@ -55,8 +53,8 @@ router.get('/crawl', (req, res) => {
   search_option[library.keywordName] = req.query.search_option.keyword;
   search_option[library.searchTypeEle] = req.query.search_option.search_type == '0' ? library.searchByTitle : library.searchByArtist;
 
-  let land_page = cheerio.fetchSync(library.url).$;
-  let $ = land_page.$;
+  let land_page = cheerio.fetchSync(library.url);
+  var $ = land_page.$;
 
   $(library.formEle).field(search_option);
 
@@ -66,13 +64,12 @@ router.get('/crawl', (req, res) => {
     $ = land_page.$;
 
     // Get media information
-    url_array =    $(library.listUrlEle).toArray().map(ele =>    $(ele).url()  ) || [];
-    title_array =  $(library.listTitleEle).toArray().map(ele =>  $(ele).text() ) || [];
-    artist_array = $(library.listArtistEle).toArray().map(ele => $(ele).text() ) || [];
+    let url_array =    $(library.listUrlEle).toArray().map(ele =>    $(ele).url()  ) || [];
+    let title_array =  $(library.listTitleEle).toArray().map(ele =>  $(ele).text() ) || [];
+    let artist_array = $(library.listArtistEle).toArray().map(ele => $(ele).text() ) || [];
 
     // Create media object containing library name, title, artist, and link to site
     url_array.forEach((url, idx) => {
-      console.log(++count);
       media_array.push({
          library: library.name_jp
         ,title:  title_array[idx]
@@ -82,7 +79,7 @@ router.get('/crawl', (req, res) => {
     });
 
     // Get next link for next page
-    let next_page_link = undefined;
+    next_page_link = undefined;
     $(library.pagerEle).find(library.pageLinkEle).toArray().forEach((ele) => {
       if(library.pageLinkTextEle){
         const text = $(ele).find(library.pageLinkTextEle).text().trim();
@@ -95,7 +92,6 @@ router.get('/crawl', (req, res) => {
 
     //TODO: SO FAR IT STOPS WORKING HERE WHEN THE PAGE VALUE IS UNDEFINED
     if(next_page_link){
-      console.log('going to next page');
       land_page = next_page_link.clickSync();
     }
 
