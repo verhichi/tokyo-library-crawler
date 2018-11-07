@@ -28,7 +28,7 @@ var listener = app.listen(port, () => {
 /******************************************************************************
  *                               Path Setup
  ******************************************************************************/
-const rest_routes = require('./REST/rest.js'); // import REST route file
+const rest_routes = require('./REST/rest'); // import REST route file
 const path = require('path');                  // import path object
 
 app.use(express.static(path.join(__dirname, '../build'))); // Set path for file to ../build
