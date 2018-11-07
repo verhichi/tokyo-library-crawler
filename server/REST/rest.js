@@ -45,6 +45,8 @@ router.get('/crawl', (req, res) => {
   const search_library_obj_array = library_json.filter((library) => req.query.search_option.checked_library.includes(library.key));
 
   const promise_array = search_library_obj_array.map((library) => {
+    cheerio.reset();
+
     return cheerio.fetch(library.url)
       .then((page) => {
         const $ = page.$;
@@ -52,33 +54,36 @@ router.get('/crawl', (req, res) => {
         let search_option = library.fields;
 
         search_option[library.keywordName] = req.query.search_option.keyword;
-        search_option[library.searchTypeEle] = req.query.search_options.search_type == '0' ? library.searchByTitle : library.searchByArtist;
+        search_option[library.searchTypeEle] = req.query.search_option.search_type == '0' ? library.searchByTitle : library.searchByArtist;
 
         $(library.formEle).field(search_option);
 
         return $(library.submitButEle).click();
       })
       .then((page) => {
-        const $ = page.$;
+        return new Promise(function(resolve, reject){
+          const $ = page.$;
 
-        const url_array    = $(library.listUrlEle).toArray().map(ele =>    $(ele).url()  );
-        const title_array  = $(library.listTitleEle).toArray().map(ele =>  $(ele).text() );
-        const artist_array = $(library.listArtistEle).toArray().map(ele => $(ele).text() );
+          const url_array    = $(library.listUrlEle).toArray().map(ele =>    $(ele).url()  ) || [];
+          const title_array  = $(library.listTitleEle).toArray().map(ele =>  $(ele).text() ) || [];
+          const artist_array = $(library.listArtistEle).toArray().map(ele => $(ele).text() ) || [];
 
-        const media_array = url_array.map((url, idx) => {
-          return {
-            library: library.name_en,
-            title:   title_array[idx],
-            artist:  artist_array[idx],
-            link:    url
-          };
+          const media_array = url_array.map((url, idx) => {
+            return {
+              library: library.name_en,
+              title:   title_array[idx],
+              artist:  artist_array[idx],
+              link:    url
+            };
+          });
+
+          resolve(media_array);
         });
-
-        resolve(media_array);
       });
   });
 
   Promise.all(promise_array).then((result_array) => {
+    console.log('DONE');
     res.json({result: [].concat(...result_array)});
   });
 
