@@ -90,7 +90,6 @@ router.get('/crawl', (req, res) => {
       }
     });
 
-    //TODO: SO FAR IT STOPS WORKING HERE WHEN THE PAGE VALUE IS UNDEFINED
     if(next_page_link){
       land_page = next_page_link.clickSync();
     }
