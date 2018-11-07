@@ -6,6 +6,12 @@ const router = express.Router();    // create routing object
 
 
 /******************************************************************************
+ *                                 Other Packages
+ ******************************************************************************/
+const cheerio = require('cheerio-httpcli'); // import cheerio-httpcli(used to web crawl)
+
+
+/******************************************************************************
  *                                 Data Setting
  ******************************************************************************/
 const library_json =     require('../data/library.json');     // json file of library information
