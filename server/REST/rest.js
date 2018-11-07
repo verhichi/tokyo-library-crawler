@@ -42,53 +42,66 @@ router.get('/crawl', (req, res) => {
 
   console.log('Searching for keyword:', req.query.search_option.keyword);
 
-  const search_library_obj_array = library_json.filter((library) => req.query.search_option.checked_library.includes(library.key));
+  const library = library_json.find((library) => library.key === req.query.search_option.checked_library);
 
-  const promise_array = search_library_obj_array.map((library) => {
-    cheerio.reset();
+  let url_array    = [];
+  let title_array  = [];
+  let artist_array = [];
+  let media_array  = [];
 
-    return cheerio.fetch(library.url)
-      .then((page) => {
-        const $ = page.$;
+  let next_page_link;
+  let search_option = library.fields;
 
-        let search_option = library.fields;
+  search_option[library.keywordName] = req.query.search_option.keyword;
+  search_option[library.searchTypeEle] = req.query.search_option.search_type == '0' ? library.searchByTitle : library.searchByArtist;
 
-        search_option[library.keywordName] = req.query.search_option.keyword;
-        search_option[library.searchTypeEle] = req.query.search_option.search_type == '0' ? library.searchByTitle : library.searchByArtist;
+  let land_page = cheerio.fetchSync(library.url).$;
+  let $ = land_page.$;
 
-        $(library.formEle).field(search_option);
+  $(library.formEle).field(search_option);
 
-        return $(library.submitButEle).click();
-      })
-      .then((page) => {
-        return new Promise(function(resolve, reject){
-          const $ = page.$;
+  land_page = $(library.submitButEle).clickSync();
 
-          const url_array    = $(library.listUrlEle).toArray().map(ele =>    $(ele).url()  ) || [];
-          const title_array  = $(library.listTitleEle).toArray().map(ele =>  $(ele).text() ) || [];
-          const artist_array = $(library.listArtistEle).toArray().map(ele => $(ele).text() ) || [];
+  do {
+    $ = land_page.$;
 
-          const media_array = url_array.map((url, idx) => {
-            return {
-              library: library.name_en,
-              title:   title_array[idx],
-              artist:  artist_array[idx],
-              link:    url
-            };
-          });
+    // Get media information
+    url_array =    $(library.listUrlEle).toArray().map(ele =>    $(ele).url()  ) || [];
+    title_array =  $(library.listTitleEle).toArray().map(ele =>  $(ele).text() ) || [];
+    artist_array = $(library.listArtistEle).toArray().map(ele => $(ele).text() ) || [];
 
-          resolve(media_array);
-        });
+    // Create media object containing library name, title, artist, and link to site
+    url_array.forEach((url, idx) => {
+      console.log(++count);
+      media_array.push({
+         library: library.name_jp
+        ,title:  title_array[idx]
+        ,artist: artist_array[idx]
+        ,link:   url
       });
-  });
+    });
 
-  Promise.all(promise_array).then((result_array) => {
-    console.log('DONE');
-    res.json({result: [].concat(...result_array)});
-  });
+    // Get next link for next page
+    let next_page_link = undefined;
+    $(library.pagerEle).find(library.pageLinkEle).toArray().forEach((ele) => {
+      if(library.pageLinkTextEle){
+        const text = $(ele).find(library.pageLinkTextEle).text().trim();
+        if(text === library.pageLinkText) next_page_link = $(ele);
+      }else{
+        const text = $(ele).text().trim();
+        if(text === library.pageLinkText) next_page_link = $(ele);
+      }
+    });
 
-  // const result = [{library: "lib1", title: "title1", link: "www.google.com", artist: "artist1"}, {library: "lib2", title: "title2", link: "www.yahoo.com", artist: "artist2"}];
-  // res.json({result});
+    //TODO: SO FAR IT STOPS WORKING HERE WHEN THE PAGE VALUE IS UNDEFINED
+    if(next_page_link){
+      console.log('going to next page');
+      land_page = next_page_link.clickSync();
+    }
+
+  }while(next_page_link);
+
+  res.json({result: media_array});
 });
 
 
