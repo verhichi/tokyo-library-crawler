@@ -31,7 +31,6 @@ export default class Body extends Component{
    * @return -          no return value
    */
   crawlLibrary(keyword, search_type, checked_library){
-
     // empty the array before crawling
     this.setState({crawl_result_array: []});
 
@@ -54,17 +53,7 @@ export default class Body extends Component{
           this.setState({crawl_result_array: this.state.crawl_result_array.concat(res.body.result)});
         });
       });
-
     }
-
-
-
-    // Send GET request to server via /crawl uri
-    // Receive search result
-
-
-  }
-
 
   render(){
     return (
