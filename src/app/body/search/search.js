@@ -7,9 +7,11 @@ import request from 'superagent';
  *  Search - A component that lists the search options, keyword field, and the search button.
  *  Parent Components - "Body"
  *
- *  @state {String}   keyword         - search keyword
- *         {String}   search_type     - search type(represented by a value)
- *         {String[]} checked_library - array of libraries to search(each represented by a value)
+ *  @state {Object[]}   search_type_array  - array of search_type objects
+ *         {Object[]}   library_array      - array of library objects
+ *         {String}     keyword            - search keyword
+ *         {String}     search_type        - search type(represented by a value)
+ *         {String[]}   checked_library    - array of libraries to search(each represented by a value)
  *
  *  @props {Function} crawlLibrary    - Function used to crawl the library
  *
@@ -18,52 +20,56 @@ export default class Search extends Component{
   constructor(props){
     super(props);
     this.state = {
-      keyword:         '',
-      search_type:     '0',
-      checked_library: []
+      search_type_array: [],
+      library_array:     [],
+      keyword:           '',
+      search_type:       '0',
+      checked_library:   []
     };
 
-    this.onTextChangeHandler =  this.onTextChangeHandler.bind(this);
-    this.onRadioHandler =       this.onRadioHandler.bind(this);
-    this.onCheckHandler =       this.onCheckHandler.bind(this);
+    this.getSearchTypeList    = this.getSearchTypeList.bind(this);
+    this.getLibraryList       = this.getLibraryList.bind(this);
+    this.onTextChangeHandler  = this.onTextChangeHandler.bind(this);
+    this.onRadioHandler       = this.onRadioHandler.bind(this);
+    this.onCheckHandler       = this.onCheckHandler.bind(this);
     this.onButtonClickHandler = this.onButtonClickHandler.bind(this);
   }
 
 
-  // /**
-  //  * getSearchTypeList - sends GET request to retrieve an array of search types.
-  //  *
-  //  * @return {Object[]} - array of search_type Objects.
-  //  */
-  // getSearchTypeList(){
-  //   request
-  //     .get('/rest/search_type')
-  //     .end((err, res) => {
-  //       if(err){
-  //         console.log('superagent ERROR!');
-  //         return
-  //       }
-  //       this.search_type_array = res.body.result;
-  //     });
-  // }
-  //
-  //
-  // /**
-  //  * getLibraryList - sends GET request to retrieve an array of libraries.
-  //  *
-  //  * @return {Object[]} - array of library objects.
-  //  */
-  // getLibraryList(){
-  //   request
-  //     .get('/rest/library')
-  //     .end((err, res) => {
-  //       if(err){
-  //         console.log('superagent ERROR!');
-  //         return
-  //       }
-  //       this.library_array = res.body.result;
-  //     });
-  // }
+  /**
+   * getSearchTypeList - sends GET request to retrieve an array of search types.
+   *
+   * @return {Object[]} - array of search_type Objects.
+   */
+  getSearchTypeList(){
+    request
+      .get('/rest/search_type')
+      .end((err, res) => {
+        if(err){
+          console.log('superagent ERROR!');
+          return
+        }
+        this.setState({search_type_array: res.body.result});
+      });
+  }
+
+
+  /**
+   * getLibraryList - sends GET request to retrieve an array of libraries.
+   *
+   * @return {Object[]} - array of library objects.
+   */
+  getLibraryList(){
+    request
+      .get('/rest/library')
+      .end((err, res) => {
+        if(err){
+          console.log('superagent ERROR!');
+          return
+        }
+        this.setState({library_array: res.body.result});
+      });
+  }
 
 
   /**
@@ -124,87 +130,38 @@ export default class Search extends Component{
 
   render(){
 
-    let search_type_ele_array = [];
-    let library_ele_array = [];
+    this.getSearchTypeList();
+    this.getLibraryList();
 
-    request
-      .get('/rest/search_type')
-      .end((err, res) => {
-        if(err){
-          console.log('superagent ERROR!');
-          return
-        }
+    // Array of search type element
+    const search_type_ele_array = this.search_type_array.map((obj, idx) => {
+      const radio_label = obj.type;
+      const radio_value = obj.key;
+      const radio_id = `id_radio_${obj.key}`;
+      const is_checked = this.state.search_type == obj.key;
 
-        // Array of search type element
-        search_type_ele_array = res.body.result.map((obj, idx) => {
-          const radio_label = obj.type;
-          const radio_value = obj.key;
-          const radio_id = `id_radio_${obj.key}`;
-          const is_checked = this.state.search_type == obj.key;
+      return (
+        <span key={idx}>
+          <input id={radio_id} type="radio" name="type" value={radio_value} checked={is_checked} onChange={this.onRadioHandler}/>
+          <label className="radio-label" htmlFor={radio_id}>{radio_label}</label>
+        </span>
+      );
+    });
 
-          return (
-            <span key={idx}>
-              <input id={radio_id} type="radio" name="type" value={radio_value} checked={is_checked} onChange={this.onRadioHandler}/>
-              <label className="radio-label" htmlFor={radio_id}>{radio_label}</label>
-            </span>
-          );
-        });
-      });
+    // Array of library element
+    const library_ele_array = this.library_array.map((obj, idx) => {
+      const checkbox_value = obj.key;
+      const checkbox_id = `id_check_${obj.key}`;
+      const checkbox_label = obj.name_en;
+      const is_checked = this.state.checked_library.includes(checkbox_value);
 
-      request
-        .get('/rest/library')
-        .end((err, res) => {
-          if(err){
-            console.log('superagent ERROR!');
-            return
-          }
-
-          // Array of library element
-          library_ele_array = res.body.result.map((obj, idx) => {
-            const checkbox_value = obj.key;
-            const checkbox_id = `id_check_${obj.key}`;
-            const checkbox_label = obj.name_en;
-            const is_checked = this.state.checked_library.includes(checkbox_value);
-
-            return (
-              <span key={idx}>
-                <input id={checkbox_id} type="checkbox" name="library" value={checkbox_value} checked={is_checked} onChange={this.onCheckHandler}/>
-                <label className="checkbox-label" htmlFor={checkbox_id}>{checkbox_label}</label>
-              </span>
-            );
-          });
-
-        });
-
-    // // Array of search type element
-    // const search_type_ele_array = this.search_type_array.map((obj, idx) => {
-    //   const radio_label = obj.type;
-    //   const radio_value = obj.key;
-    //   const radio_id = `id_radio_${obj.key}`;
-    //   const is_checked = this.state.search_type == obj.key;
-    //
-    //   return (
-    //     <span key={idx}>
-    //       <input id={radio_id} type="radio" name="type" value={radio_value} checked={is_checked} onChange={this.onRadioHandler}/>
-    //       <label className="radio-label" htmlFor={radio_id}>{radio_label}</label>
-    //     </span>
-    //   );
-    // });
-    //
-    // // Array of library element
-    // const library_ele_array = this.library_array.map((obj, idx) => {
-    //   const checkbox_value = obj.key;
-    //   const checkbox_id = `id_check_${obj.key}`;
-    //   const checkbox_label = obj.name_en;
-    //   const is_checked = this.state.checked_library.includes(checkbox_value);
-    //
-    //   return (
-    //     <span key={idx}>
-    //       <input id={checkbox_id} type="checkbox" name="library" value={checkbox_value} checked={is_checked} onChange={this.onCheckHandler}/>
-    //       <label className="checkbox-label" htmlFor={checkbox_id}>{checkbox_label}</label>
-    //     </span>
-    //   );
-    // });
+      return (
+        <span key={idx}>
+          <input id={checkbox_id} type="checkbox" name="library" value={checkbox_value} checked={is_checked} onChange={this.onCheckHandler}/>
+          <label className="checkbox-label" htmlFor={checkbox_id}>{checkbox_label}</label>
+        </span>
+      );
+    });
 
     const is_disabled = this.state.keyword.length === 0 || this.state.checked_library.length === 0; // disables search button when there are no keywords or no libraries have been checked.
 
