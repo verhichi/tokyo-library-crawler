@@ -38,7 +38,15 @@ export default class Search extends Component{
    * @return {Object[]} - array of search_type Objects.
    */
   getSearchTypeList(){
-    return [{'key': '0', 'type': 'Title'}, {'key': '1', 'type': 'Artist'}];
+    request
+      .get('/search_type')
+      .end((err, res) => {
+        if(err){
+          console.log('superagent ERROR!');
+          return
+        }
+        return res.body.result;
+      });
   }
 
 
