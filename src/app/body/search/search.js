@@ -22,12 +22,12 @@ export default class Search extends Component{
       search_type:     '0',
       checked_library: []
     };
-    this.search_type_array = this.getSearchTypeList();
-    this.library_array = this.getLibraryList();
+    this.search_type_array = [];
+    this.library_array =     [];
 
-    this.onTextChangeHandler = this.onTextChangeHandler.bind(this);
-    this.onRadioHandler = this.onRadioHandler.bind(this);
-    this.onCheckHandler = this.onCheckHandler.bind(this);
+    this.onTextChangeHandler =  this.onTextChangeHandler.bind(this);
+    this.onRadioHandler =       this.onRadioHandler.bind(this);
+    this.onCheckHandler =       this.onCheckHandler.bind(this);
     this.onButtonClickHandler = this.onButtonClickHandler.bind(this);
   }
 
@@ -45,7 +45,7 @@ export default class Search extends Component{
           console.log('superagent ERROR!');
           return
         }
-        return res.body.result;
+        this.search_type_array = res.body.result;
       });
   }
 
@@ -63,7 +63,7 @@ export default class Search extends Component{
           console.log('superagent ERROR!');
           return
         }
-        return res.body.result;
+        this.library_array = res.body.result;
       });
   }
 
@@ -125,6 +125,10 @@ export default class Search extends Component{
 
 
   render(){
+
+    this.getSearchTypeList();
+    this.getLibraryList();
+
     // Array of search type element
     const search_type_ele_array = this.search_type_array.map((obj, idx) => {
       const radio_label = obj.type;
