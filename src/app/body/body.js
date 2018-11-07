@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 
+import request from 'superagent';
+
 import Search from './search/search';
 import Result from './result/result';
 
@@ -29,8 +31,25 @@ export default class Body extends Component{
    * @return -          no return value
    */
   crawlLibrary(keyword, search_type, checked_library){
-    const response = [{lib: "lib1", title: "title1", link: "www.google.com", artist: "artist1"}, {lib: "lib2", title: "title2", link: "www.yahoo.com", artist: "artist2"}];
-    this.setState({crawl_result_array: response});
+    // query object to send with request
+    const query_obj = {
+      keyword,
+      search_type,
+      checked_library
+    };
+
+    // Send GET request to server via /crawl uri
+    // Receive search result
+    request
+      .get('/crawl')
+      .query({search_option: query_obj})
+      .end((err, res) => {
+        if(err){
+          console.log('Superagent ERROR');
+          return
+        }
+        this.setState({crawl_result_array: res.body.result});
+      });
   }
 
 
