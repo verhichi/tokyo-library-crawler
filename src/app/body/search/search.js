@@ -39,7 +39,7 @@ export default class Search extends Component{
    */
   getSearchTypeList(){
     request
-      .get('/search_type')
+      .get('/rest/search_type')
       .end((err, res) => {
         if(err){
           console.log('superagent ERROR!');
@@ -57,7 +57,7 @@ export default class Search extends Component{
    */
   getLibraryList(){
     request
-      .get('/library')
+      .get('/rest/library')
       .end((err, res) => {
         if(err){
           console.log('superagent ERROR!');
