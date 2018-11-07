@@ -37,9 +37,11 @@ export default class Search extends Component{
 
 
   // Set search_type_array and library_array values before mounting.
+  // Only send request if either data is empty
   componentWillMount(){
-    this.getSearchTypeList();
-    this.getLibraryList();
+    if(this.state.search_type_array.length === 0) this.getSearchTypeList();
+    if(this.state.library_array.length === 0) this.getLibraryList();
+    }
   }
 
 
