@@ -56,7 +56,15 @@ export default class Search extends Component{
    * @return {Object[]} - array of library objects.
    */
   getLibraryList(){
-    return [{'key': '0', 'name_en': 'Chuuou'}, {'key': '1', 'name_en': 'Katsushika'}];
+    request
+      .get('/library')
+      .end((err, res) => {
+        if(err){
+          console.log('superagent ERROR!');
+          return
+        }
+        return res.body.result;
+      });
   }
 
 
