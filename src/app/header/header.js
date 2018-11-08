@@ -7,7 +7,10 @@ export default class Header extends Component{
 
   render(){
     return (
-      <header>TITLE</header>
+      <header>
+        <h1>Tokyo Library Audio Crawler</h1>
+        <h1 className="show-help" onClick={this.props.showHelp}>HELP</h1>
+      </header>
     );
   }
 }
