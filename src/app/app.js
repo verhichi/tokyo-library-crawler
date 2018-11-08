@@ -16,7 +16,7 @@ export default class App extends Component{
         <Header/>
         <Error>
           <Body/>
-        <Error/>
+        </Error>
         <Footer/>
       </Fragment>
     );
