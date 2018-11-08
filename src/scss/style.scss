@@ -44,8 +44,11 @@
       background: $header-background-color;
       bottom: 0;
       color: $white-color;
+      display: flex;
       height: 50px;
+      justify-content: space-between;
       left: 0;
+      padding: 0 10px;
       position: absolute;
       right: 0;
       text-align: left;
