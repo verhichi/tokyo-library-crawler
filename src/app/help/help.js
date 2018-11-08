@@ -2,7 +2,7 @@ import React, {Component, Fragment} from 'react';
 
 
 export default class Help extends Component{
-  constructor(){
+  constructor(props){
     super(props);
   }
 
