@@ -20,11 +20,11 @@ export default class Body extends Component{
     super(props);
     this.state = {
       crawl_result_array: [],
-      is_crawling: false
+      is_crawling: false,
+      is_timeout: false
     };
     this.crawlLibrary = this.crawlLibrary.bind(this);
   }
-
 
   /**
    * crawlLibrary - Sends request to server to scrape the web and receives the results. Then sets the result as the crawl_result_array state.
@@ -38,7 +38,8 @@ export default class Body extends Component{
     // empty the array before crawling
     this.setState({
       crawl_result_array: [],
-      is_crawling: true
+      is_crawling: true,
+      is_timeout: false
     });
 
     let checked_library_count = 0;
@@ -57,7 +58,11 @@ export default class Body extends Component{
         .retry(0)
         .timeout(300000)
         .end((err, res) => {
-          if(err){
+          if(err.timeout){
+            this.setState({is_timeout: true});
+            if(++checked_library_count === checked_library.length) this.setState({is_crawling: false});
+            return
+          } else {
             this.setState({is_crawling: false}, () => {throw new Error('Failed to search library successfully!')});
             return
           }
@@ -70,7 +75,7 @@ export default class Body extends Component{
   render(){
     return (
       <main>
-        <Search crawlLibrary={this.crawlLibrary} is_crawling={this.state.is_crawling}/>
+        <Search crawlLibrary={this.crawlLibrary} is_crawling={this.state.is_crawling} is_timeout={this.state.is_timeout}/>
         <Result crawl_result_array={this.state.crawl_result_array}/>
       </main>
     );

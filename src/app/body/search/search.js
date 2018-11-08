@@ -180,6 +180,9 @@ export default class Search extends Component{
     let button_loading_ele = null;
     if(this.props.is_crawling) button_loading_ele = <div className="loading_symbol"></div>;
 
+    let timeout_message_ele = null;
+    if(this.props.is_timeout) timeout_message_ele = <aside className="timeout-container">One or more library search(es) has timed out(5min). Please use a more specific keyword for an efficient search.</aside>;
+
     return (
       <div className="hero-image">
         <div className="search-container">
@@ -200,6 +203,8 @@ export default class Search extends Component{
           </div>
 
           <button className="search-button" disabled={is_disabled} onClick={this.onButtonClickHandler}>SEARCH{button_loading_ele}</button>
+
+          {timeout_message_ele}
 
         </div>
       </div>
