@@ -53,6 +53,8 @@ export default class Search extends Component{
   getSearchTypeList(){
     request
       .get('/rest/search_type')
+      .retry(0)
+      .timeout(60000)
       .end((err, res) => {
         if(err){
           throw new Error('Failed to acquire search_type data!');
@@ -71,6 +73,8 @@ export default class Search extends Component{
   getLibraryList(){
     request
       .get('/rest/library')
+      .retry(0)
+      .timeout(60000)
       .end((err, res) => {
         if(err){
           throw new Error('Failed to acquire library data!');

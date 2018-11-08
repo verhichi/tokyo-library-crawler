@@ -54,6 +54,8 @@ export default class Body extends Component{
       request
         .get('/rest/crawl')
         .query({search_option: query_obj})
+        .retry(0)
+        .timeout(60000)
         .end((err, res) => {
           if(err){
             throw new Error('Failed to search library successfully!');
