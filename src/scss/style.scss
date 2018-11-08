@@ -52,10 +52,48 @@
       top: 0;
     }
 
+    // Show Help Button
+      .show-help{
+        float: right;
+      }
+
   // Footer
     footer{
       background: $black-color;
       height: 100px;
+    }
+
+  // Help
+    .help-overlay{
+      align-items: center;
+      background: $checkbox-hover-color;
+      display: flex;
+      height: 100%;
+      justify-content: center;
+      padding: 30px;
+      position: fixed;
+      width: 100%;
+      z-index: 1000;
+    }
+
+    .help-container{
+      background: $white-color;
+      border: none;
+      position: relative;
+    }
+
+    .close-help{
+      padding: 5px;
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+
+    .help-content{
+      align-items: center;
+      display: flex;
+      justify-content: center;
+      padding: 20px;
     }
 
   // Main
