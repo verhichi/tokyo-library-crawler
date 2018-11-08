@@ -56,7 +56,7 @@ export default class Body extends Component{
         .query({search_option: query_obj})
         .end((err, res) => {
           if(err){
-            console.log('Superagent ERROR');
+            throw new Error('Failed to search library successfully!');
             return
           }
           this.setState({crawl_result_array: this.state.crawl_result_array.concat(res.body.result)});
