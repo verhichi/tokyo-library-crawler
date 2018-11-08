@@ -10,7 +10,7 @@ export default class App extends Component{
   constructor(props){
     super(props);
     this.state = {
-      show_help: false;
+      show_help: false
     };
     this.showHelp = this.showHelp.bind(this);
     this.hideHelp = this.hideHelp.bind(this);
