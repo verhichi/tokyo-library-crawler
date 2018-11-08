@@ -44,21 +44,19 @@
       background: $header-background-color;
       bottom: 0;
       color: $white-color;
+      cursor: pointer;
       display: flex;
+      font-size: 30px;
       height: 50px;
       justify-content: space-between;
       left: 0;
+      line-height: 50px;
       padding: 0 10px;
       position: absolute;
       right: 0;
       text-align: left;
       top: 0;
     }
-
-    // Show Help Button
-      .show-help{
-        float: right;
-      }
 
   // Footer
     footer{
@@ -86,6 +84,7 @@
     }
 
     .close-help{
+      cursor: pointer;
       padding: 5px;
       position: absolute;
       right: 0;

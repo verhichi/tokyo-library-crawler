@@ -27,12 +27,12 @@ export default class App extends Component{
   render(){
     return (
       <Fragment>
-        <Header showHelp={this.state.showHelp}/>
+        <Header showHelp={this.showHelp}/>
         <Error>
           <Body/>
         </Error>
         <Footer/>
-        <Help show_help={this.state.show_help} hideHelp={this.state.hideHelp}/>
+        <Help show_help={this.state.show_help} hideHelp={this.hideHelp}/>
       </Fragment>
     );
   }
