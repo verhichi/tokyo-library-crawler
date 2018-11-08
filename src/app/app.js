@@ -3,7 +3,7 @@ import React, {Component, Fragment} from 'react';
 import Header from './header/header';
 import Body from './body/body';
 import Footer from './footer/footer';
-import Error from './error/error';
+import ErrorBoundary from './error/error';
 import Help from './help/help';
 
 export default class App extends Component{
@@ -28,9 +28,9 @@ export default class App extends Component{
     return (
       <Fragment>
         <Header showHelp={this.showHelp}/>
-        <Error>
+        <ErrorBoundary>
           <Body/>
-        </Error>
+        </ErrorBoundary>
         <Footer/>
         <Help show_help={this.state.show_help} hideHelp={this.hideHelp}/>
       </Fragment>

@@ -55,10 +55,10 @@ export default class Body extends Component{
         .get('/rest/crawl')
         .query({search_option: query_obj})
         .retry(0)
-        .timeout(60000)
+        .timeout(300000)
         .end((err, res) => {
           if(err){
-            throw new Error('Failed to search library successfully!');
+            this.setState({is_crawling: false}, () => {throw new Error('Failed to search library successfully!')});
             return
           }
           this.setState({crawl_result_array: this.state.crawl_result_array.concat(res.body.result)});
