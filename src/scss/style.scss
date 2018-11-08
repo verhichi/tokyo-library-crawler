@@ -73,11 +73,15 @@
     .help-overlay{
       align-items: center;
       background: $checkbox-hover-color;
+      bottom: 0;
       display: flex;
       height: 100%;
+      left: 0;
       justify-content: center;
       padding: 30px;
       position: fixed;
+      right: 0;
+      top: 0;
       width: 100%;
       z-index: 1000;
     }
@@ -99,6 +103,7 @@
     .help-content{
       align-items: center;
       display: flex;
+      flex-direction: column;
       justify-content: center;
       padding: 20px;
     }
