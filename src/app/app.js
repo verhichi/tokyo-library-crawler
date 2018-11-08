@@ -3,6 +3,7 @@ import React, {Component, Fragment} from 'react';
 import Header from './header/header';
 import Body from './body/body';
 import Footer from './footer/footer';
+import Error from './error/error';
 
 export default class App extends Component{
   constructor(props){
@@ -12,6 +13,7 @@ export default class App extends Component{
   render(){
     return (
       <Fragment>
+        <Error/>
         <Header/>
         <Body/>
         <Footer/>
