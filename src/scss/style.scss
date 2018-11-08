@@ -290,6 +290,13 @@
               opacity: 1;
             }
 
+        // Timeout message
+          .timeout-container{
+            border-botttom: 1px solid $white-color;
+            font-size: 20px;
+            margin-top: 10px;
+          }
+
     // Result Table Container
       .result-table-container{
         padding: 10px 50px 100px 50px;
