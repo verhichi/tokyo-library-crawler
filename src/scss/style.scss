@@ -28,6 +28,16 @@
     min-height: 100%;
   }
 
+// Error Container
+  .error-container{
+    align-items: center;
+    background: $error-background-color;
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    width: 100%;
+  }
+
 // ELEMENT SPECIFIC PROPERTIES
   // Header
     header{
