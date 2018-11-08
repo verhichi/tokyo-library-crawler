@@ -13,9 +13,10 @@ export default class App extends Component{
   render(){
     return (
       <Fragment>
-        <Error/>
         <Header/>
-        <Body/>
+        <Error>
+          <Body/>
+        <Error/>
         <Footer/>
       </Fragment>
     );
