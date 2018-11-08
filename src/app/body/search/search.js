@@ -54,7 +54,7 @@ export default class Search extends Component{
       .get('/rest/search_type')
       .end((err, res) => {
         if(err){
-          console.log('superagent ERROR!');
+          throw new Error('Failed to acquire search_type data!');
           return
         }
         this.setState({search_type_array: res.body.result});
@@ -72,7 +72,7 @@ export default class Search extends Component{
       .get('/rest/library')
       .end((err, res) => {
         if(err){
-          console.log('superagent ERROR!');
+          throw new Error('Failed to acquire library data!');
           return
         }
         this.setState({library_array: res.body.result});
