@@ -49,7 +49,7 @@ export default class Help extends Component{
               </div>
               <div className="help-section-container">
                 <div className="help-section-title">How long did this take to make?</div>
-                <div className="help-section-text">About a week? If you want to see the process, check out my github.</div>
+                <div className="help-section-text">About a week? If you want to see the process, check out <a href="https://github.com/verhichi/tokyo-library-crawler">my github page</a>.</div>
               </div>
               <div className="help-section-container">
                 <div className="help-section-title">Why did you make this?</div>
