@@ -58,12 +58,9 @@ export default class Body extends Component{
         .retry(0)
         .timeout(300000)
         .end((err, res) => {
-          if(err.timeout){
+          if(err){
             this.setState({is_timeout: true});
             if(++checked_library_count === checked_library.length) this.setState({is_crawling: false});
-            return
-          } else {
-            this.setState({is_crawling: false}, () => {throw new Error('Failed to search library successfully!')});
             return
           }
           this.setState({crawl_result_array: this.state.crawl_result_array.concat(res.body.result)});
