@@ -35,6 +35,7 @@ export default class Help extends Component{
                 <div className="help-section-title">Warnings</div>
                 <div className="help-section-text">
                   <ul>
+                    <li>Out of the 23 wards in Tokyo, only the 7 listed on this page were compatible with the tool used to search.</li>
                     <li>Only a single instance can be run at a time; in other words, if another user is in the middle of his/her search, you will have to wait for his/her search to end before you can start your own.</li>
                     <li>Each library gets 5 minutes before it times out.</li>
                     <li>This website is designed only for PC.</li>
