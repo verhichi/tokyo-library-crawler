@@ -100,11 +100,27 @@
     }
 
     .help-content{
-      align-items: center;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
       padding: 20px;
+    }
+
+    .help-main-title{
+      font-size: 50px;
+      text-align: center;
+    }
+
+    .help-section-container{
+      margin: 20px 0;
+      text-align: left;
+
+      ol,
+      ul{
+        margin: 0;
+      }
+    }
+
+    .help-section-title{
+      font-size: 24px;
+      font-weight: bold;
     }
 
   // Main
