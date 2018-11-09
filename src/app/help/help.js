@@ -19,7 +19,7 @@ export default class Help extends Component{
                 <div className="help-section-text">This is a web application that searches libraries in Tokyo for audio media(CD).</div>
               </div>
               <div className="help-section-container">
-                <div className="help-section-title">How do I use it?</div>
+                <div className="help-section-title">How do I use this?</div>
                 <div className="help-section-text">
                   <ol>
                     <li>Input keyword that you want to search with.</li>
