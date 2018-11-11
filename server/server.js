@@ -31,9 +31,9 @@ if(cluster.isMaster){
 
 } else {
 
-  const express = require('express') // import express framework
-  const app = express();             // instantiate express
-  const port = 3000;                 // set default port number
+  const express = require('express')      // import express framework
+  const app = express();                  // instantiate express
+  const port = process.env.PORT || 3000;  // set default port number
 
   const body_parser = require('body-parser');        // import body-parser
   app.use(body_parser.urlencoded({extended: true})); // use body-parser
