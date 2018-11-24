@@ -1,44 +1,42 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Table of Contents
+1. My Motive
+1. TL;DR
+1. Technologies used
+1. Using the Application
+1. Practicality
 
-## Available Scripts
+# 1. My Motive
+- I was personally asked by a friend if I could somehow facilitate his library expeditions to find audio media. So I made this for him.
+- There was a site that searched for books/magazines, but not CDs.
+- Me: "If there ain't one, just make one"
+- I also had interest in Web Crawlers at the time so I wanted to try it.
+- I also also was studying React at the time so I decided to put it to use.
 
-In the project directory, you can run:
+# 2. TL;DR
+- Here is a 15sec gif showing the application in action.
+![weeee, it worked](https://qiita-image-store.s3.amazonaws.com/0/317253/5725c670-8f15-0987-731b-82216f141887.gif)
 
-### `npm start`
+# 3. Technologies used
+- node.js (v8.10.0)
+    - express (v4.16.4) - a popular node.js framework
+    - superagent (v4.0.0-beta.5) - a light-weight clientside http request library
+    - cheerio-httpcli (v0.7.3) - a web-scraping library that handles like jQuery
+    - create-react-app (v1.5.2) - the react foundation builder that we've grown to love
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+# 4. Using the Application
+1. run "npm run build" on the command line.
+1. run "node server/server.js".
+1. Open your browser and navigate to www.localhost:3000
+1. Enter the keyword that you want to use to search.
+1. Select whether you want to search the keyword as a title or artist.
+1. Check all the wards with the libraries that you want to search in.
+1. Click the "search" button and wait.
+1. ???
+1. PROFIT!
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+# 5. Practicality
+- I'd have to say this is not really a practical application. Here's why...
+    - The crawl speed is slow.
+    - cheerio-httpcli is single instanced, meaning if someone is using it, noone else can use it. One person at a time, basically.
+    - Depending on the library site, some URL's can not be property viewed because they require session ID's in cookies.
+    - **Also, at the time of making, I didn't know about "robots.txt". Out of the 7 wards that can be selected, 5 of them had the url path set to "disallow". The remaining 2 wards just didn't have "robots.txt".**
